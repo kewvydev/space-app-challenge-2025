@@ -27,7 +27,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <div className="relative min-h-screen">
+          {/* Space Background Layers */}
+          <div className="stars"></div>
+          <div className="twinkling"></div>
+          <div className="clouds"></div>
+          
+          {/* Content */}
+          <div className="relative z-10">
+            {children}
+          </div>
+        </div>
       </body>
     </html>
   );
