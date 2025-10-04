@@ -1,84 +1,99 @@
 "use client";
-
-import { Canvas } from '@react-three/fiber';
-import { Stars, OrbitControls } from '@react-three/drei';
+import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [showIntro, setShowIntro] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 3000); // La intro dura 3 segundos
+    return () => clearTimeout(timer);
+  }, []);
+
+  const navLinkClasses = "px-5 py-2 text-md font-semibold text-white rounded-lg hover:bg-white/10 transition-colors duration-300";
+
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      {/* 3D Space Background */}
-      <div className="absolute inset-0 z-0">
-        <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
-          <color attach="background" args={['#040d21']} />
-          <Stars 
-            radius={100} 
-            depth={50} 
-            count={5000} 
-            factor={4} 
-            saturation={0} 
-            fade 
-            speed={1} 
-          />
-          <pointLight position={[10, 10, 10]} intensity={0.3} color="#00ffaa" />
-          <pointLight position={[-10, -10, -10]} intensity={0.2} color="#ff33aa" />
-          <ambientLight intensity={0.1} />
-          <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
-        </Canvas>
-      </div>
+    <div className="relative min-h-screen flex flex-col items-center">
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            key="intro"
+            className="absolute inset-0 flex items-center justify-center bg-black z-50" // Color base del texto eliminado de aquí
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <motion.h1
+              // CAMBIOS AQUÍ: Tamaño de texto aumentado y color especificado
+              className="text-6xl md:text-8xl lg:text-9xl font-bold text-center font-serif drop-shadow-lg text-yellow-400"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 1 }}
+            >
+              The Broken Ballad <br className="hidden md:block" />
+              of the Shield
+            </motion.h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <header className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10">
+        <div className="sun"></div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full px-8 text-center">
-        {/* Main Title */}
-        <div className="mb-12">
-          <h1 className="text-6xl md:text-8xl font-bold mb-4 holographic">
-            LA BALADA DEL ESCUDO ROTO
-          </h1>
-          <p className="text-xl md:text-2xl text-cyan-300 neon-glow">
-            A Post-Apocalyptic Space Western
-          </p>
+        <div>
+          <Link href="/" 
+            // CAMBIOS AQUÍ: Tamaño y color actualizados para consistencia
+            className="text-6xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors"
+          >
+            
+            The Broken Ballad <br className="hidden md:block" />
+              of the Shield
+          </Link>
         </div>
 
-        {/* Subtitle */}
-        <div className="mb-16 max-w-4xl">
-          <p className="text-lg md:text-xl text-cyan-200 leading-relaxed mb-6">
-            In the vast emptiness of space, where the last remnants of humanity drift among the stars, 
-            a tale of survival, hope, and the unbreakable spirit of the frontier unfolds.
-          </p>
-          <p className="text-base text-cyan-300 terminal-cursor">
-            Enter the Crystal Core to begin your journey...
-          </p>
-        </div>
+        <nav className="flex items-center gap-4">
+          <Link href="/story" className={navLinkClasses}>
+            HISTORY
+          </Link>
+          <Link href="/chapters" className={navLinkClasses}>
+            CHARACTERS
+          </Link>
+          <Link href="/about" className={navLinkClasses}>
+            ABOUT US
+          </Link>
+        </nav>
+      </header>
 
-        {/* Call to Action */}
-        <div className="text-center">
-          <p className="text-cyan-300 text-lg mb-8">
-            Use the navigation above to explore the story, meet the characters, and learn more about this project.
-          </p>
-          <div className="inline-block px-8 py-4 bg-cyan-400/10 border border-cyan-400/30 rounded-lg">
-            <p className="text-cyan-400 font-mono text-sm">
-              Click "Story" to enter the Crystal Core
-            </p>
-          </div>
-        </div>
+      <main className="flex justify-center w-full px-6">
+        <motion.img
+          src="/main-image.jpg"
+          alt="Main scene"
+          className="rounded-xl shadow-2xl max-w-4xl w-full object-cover"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 3 }}
+        />
+      </main>
 
-        {/* Tech Stats */}
-        <div className="absolute bottom-8 left-8 text-sm text-cyan-500/60 font-mono">
-          <div className="space-y-1">
-            <div>SYSTEM STATUS: ONLINE</div>
-            <div>CRYSTAL CORE: STABLE</div>
-            <div>NAVIGATION: READY</div>
-          </div>
-        </div>
-
-        {/* Instructions */}
-        <div className="absolute bottom-8 right-8 text-sm text-cyan-500/60 font-mono text-right">
-          <div className="space-y-1">
-            <div>CLICK TO ROTATE</div>
-            <div>DRAG TO EXPLORE</div>
-            <div>KEYS 1-6 FOR CHAPTERS</div>
-          </div>
-        </div>
-      </div>
+      <style jsx>{`
+        .sun {
+          position: absolute;
+          top: 50px;
+          right: -200px;
+          width: 100px;
+          height: 100px;
+          z-index: -1;
+          background: radial-gradient(ellipse at center, #ffd700 0%, #ff8c00 100%);
+          border-radius: 50%;
+          box-shadow: 0 0 20px 5px #ffd700,
+                      0 0 50px 20px #ff8c00,
+                      0 0 100px 40px #ff4500;
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -29,12 +31,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} h-full font-mono bg-space-dark text-cyan-400 antialiased overflow-hidden`}
       >
-        <div className="h-full flex flex-col">
-          {/* Navbar */}
-          <Navbar />
-
-          {/* Main Content */}
-          <main className="flex-1 pt-16">
+        <div className="relative min-h-screen">
+          {/* Space Background Layers */}
+          <div className="stars"></div>
+          <div className="twinkling"></div>
+          <div className="clouds"></div>
+          
+          {/* Content*/}
+          <div className="relative z-10">
             {children}
           </main>
         </div>
