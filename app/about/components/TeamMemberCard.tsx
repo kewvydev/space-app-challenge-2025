@@ -18,6 +18,7 @@ export default function TeamMemberCard({ name, role, image }: Props) {
                 {image ? (
                     <img
                         src={image}
+                        
                         alt={`Foto de ${name}`}
                         className="w-full h-full object-cover"
                     />
