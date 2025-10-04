@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -33,7 +35,7 @@ export default function RootLayout({
           <div className="twinkling"></div>
           <div className="clouds"></div>
           
-          {/* Content probando gael branch*/}
+          {/* Content*/}
           <div className="relative z-10">
             {children}
           </div>

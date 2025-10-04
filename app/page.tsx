@@ -3,113 +3,97 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
-
-
-
 export default function Home() {
-
   const [showIntro, setShowIntro] = useState(true);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 3000);
+    }, 3000); // La intro dura 3 segundos
     return () => clearTimeout(timer);
   }, []);
 
+  const navLinkClasses = "px-5 py-2 text-md font-semibold text-white rounded-lg hover:bg-white/10 transition-colors duration-300";
 
   return (
-
-    <div className="min-h-screen flex flex-col items-center">
-
-
-      <header className="w-full flex items-center justify-between px-8 pt-10 pb-10  bg-black/40 rounded-4xl">
-        <a href="https://www.nasa.gov/" target="_blank" rel="noopener noreferrer">
-          <img src="/NASA_logo.png" alt="NASA" className="h-40 ml-10 " />
-        </a>
-
-        <div className="w-1 h-20 bg-white/70 mx-1 rounded"></div>
-
-        {/*
-        <motion.h1
-          className=" w-full text-yellow-200 text-4xl md:text-5xl font-bold text-center font-serif drop-shadow-lg"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        > The<br className="hidden md:block" /> Ballad <br className="hidden md:block" />Broken<br className="hidden md:block" /> of the Shield
-
-        </motion.h1>
-        */}
-
-        <AnimatePresence>
-          {showIntro && (
-            <motion.div
-              key="intro"
-              className="absolute inset-0 flex items-center justify-center bg-black text-yellow-200 z-50"
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+    <div className="relative min-h-screen flex flex-col items-center">
+      <AnimatePresence>
+        {showIntro && (
+          <motion.div
+            key="intro"
+            className="absolute inset-0 flex items-center justify-center bg-black z-50" // Color base del texto eliminado de aquí
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
+          >
+            <motion.h1
+              // CAMBIOS AQUÍ: Tamaño de texto aumentado y color especificado
+              className="text-6xl md:text-8xl lg:text-9xl font-bold text-center font-serif drop-shadow-lg text-yellow-400"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 1 }}
             >
-              <motion.h1
-                className="text-5xl md:text-7xl font-bold text-center font-serif drop-shadow-lg"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{opacity:0,y:-20}}
-                transition={{ duration: 1 }}
-    
-              >
-                The Broken Ballad <br className="hidden md:block" />
-                of the Shield
-              </motion.h1>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              The Broken Ballad <br className="hidden md:block" />
+              of the Shield
+            </motion.h1>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <header className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10">
+        <div className="sun"></div>
 
-        <div className="text-yellow-200 text-4xl md:text-5xl font-bold text-center font-serif drop-shadow-lg">
-          The Broken Ballad <br className="hidden md:block" /> of the Shield
+        <div>
+          <Link href="/" 
+            // CAMBIOS AQUÍ: Tamaño y color actualizados para consistencia
+            className="text-6xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors"
+          >
+            
+            The Broken Ballad <br className="hidden md:block" />
+              of the Shield
+          </Link>
         </div>
-        <div className="w-1 h-20 bg-white/70 mx-6 rounded"></div>
-        <a href="https://www.spaceappschallenge.org/" target="_blank" rel="noopener noreferrer">
-          <img src="/SpaceAppChallenge_logo.png" alt="Space Apps" className="h-16" />
-        </a>
+
+        <nav className="flex items-center gap-4">
+          <Link href="/story" className={navLinkClasses}>
+            HISTORY
+          </Link>
+          <Link href="/chapters" className={navLinkClasses}>
+            CHARACTERS
+          </Link>
+          <Link href="/about" className={navLinkClasses}>
+            ABOUT US
+          </Link>
+        </nav>
       </header>
 
-
-      <nav className="flex justify-start  gap-20 mb-8 mt-10 py-10 bg-black/40 rounded-4xl px-20 shadow-lg">
-        <Link
-          href="/story"
-          className="bg-gray-700/90 border-4 border-gray-900 rounded-4xl px-8 py-4 text-2xl font-extrabold font-mono text-white shadow-lg tracking-wider hover:bg-yellow-600/90  transition-all duration-200"
-        >
-          HISTORY
-        </Link>
-        <Link
-          href="/chapters"
-          className="bg-gray-700/90 border-4 border-gray-900 rounded-4xl px-8 py-4 text-2xl font-extrabold font-mono text-white shadow-lg tracking-wider hover:bg-yellow-600/90  transition-all duration-200"
-        >
-          CHAPTERS
-        </Link>
-        <Link
-          href="/characters"
-          className="bg-gray-700/90 border-4 border-gray-900 rounded-4xl px-8 py-4 text-2xl font-extrabold font-mono text-white shadow-lg tracking-wider hover:bg-yellow-600/90  transition-all duration-200"
-        >
-          CHARACTERS
-        </Link>
-        <Link
-          href="/about"
-          className="bg-gray-700/90 border-4 border-gray-900 rounded-4xl px-8 py-4 text-2xl font-extrabold font-mono text-white shadow-lg tracking-wider hover:bg-yellow-600/90 transition-all duration-200"
-        >
-          ABOUT US
-        </Link>
-      </nav>
-
-
-      <div className="flex justify-center w-full">
-        <img
+      <main className="flex justify-center w-full px-6">
+        <motion.img
           src="/main-image.jpg"
           alt="Main scene"
           className="rounded-xl shadow-2xl max-w-4xl w-full object-cover"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 3 }}
         />
-      </div>
+      </main>
+
+      <style jsx>{`
+        .sun {
+          position: absolute;
+          top: 50px;
+          right: -200px;
+          width: 100px;
+          height: 100px;
+          z-index: -1;
+          background: radial-gradient(ellipse at center, #ffd700 0%, #ff8c00 100%);
+          border-radius: 50%;
+          box-shadow: 0 0 20px 5px #ffd700,
+                      0 0 50px 20px #ff8c00,
+                      0 0 100px 40px #ff4500;
+        }
+      `}</style>
     </div>
   );
 }
