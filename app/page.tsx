@@ -78,8 +78,10 @@ export default function Home() {
         <div className="sun"></div>
         <div>
           {/* Título simplificado a un tamaño más adecuado para un "logo" */}
-          <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
-            The Broken Ballad
+          <Link href="/" className="text-4xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
+            
+             The Broken Ballad 
+              of the Shield
           </Link>
         </div>
         <nav className="flex items-center gap-2">
