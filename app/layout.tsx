@@ -40,7 +40,7 @@ export default function RootLayout({
           {/* Content*/}
           <div className="relative z-10">
             {children}
-          </main>
+          </div>
         </div>
       </body>
     </html>
