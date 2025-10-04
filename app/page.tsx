@@ -3,84 +3,116 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
+// Para poder animar el componente Link de Next.js
+const MotionLink = motion(Link);
+
 export default function Home() {
   const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowIntro(false);
-    }, 3000); // La intro dura 3 segundos
+    }, 4000); // Aumenté la duración para dar tiempo a la nueva animación
     return () => clearTimeout(timer);
   }, []);
 
-  const navLinkClasses = "px-5 py-2 text-md font-semibold text-white rounded-lg hover:bg-white/10 transition-colors duration-300";
+  // --- Mejora 1: Variantes para la animación del título palabra por palabra ---
+  const title = "The Broken Ballad of the Shield";
+  const titleWords = title.split(" ");
+
+  const titleContainerVariant = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Tiempo entre la aparición de cada palabra
+        delayChildren: 0.5,
+      },
+    },
+  };
+
+  const titleWordVariant = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  const navLinkClasses = "px-5 py-2 text-md font-semibold text-white/80 rounded-lg hover:text-white transition-colors duration-300";
 
   return (
-    <div className="relative min-h-screen flex flex-col items-center">
+    <div className="relative min-h-screen flex flex-col items-center w-full">
       <AnimatePresence>
         {showIntro && (
           <motion.div
             key="intro"
-            className="absolute inset-0 flex items-center justify-center bg-black z-50" // Color base del texto eliminado de aquí
-            initial={{ opacity: 1 }}
+            className="absolute inset-0 flex items-center justify-center bg-black z-50"
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 1.5, delay: 0.5 }}
           >
             <motion.h1
-              // CAMBIOS AQUÍ: Tamaño de texto aumentado y color especificado
-              className="text-6xl md:text-8xl lg:text-9xl font-bold text-center font-serif drop-shadow-lg text-yellow-400"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 1 }}
+              className="text-5xl md:text-7xl lg:text-8xl font-bold text-center font-serif text-yellow-400 max-w-4xl"
+              variants={titleContainerVariant}
+              initial="hidden"
+              animate="visible"
             >
-              The Broken Ballad <br className="hidden md:block" />
-              of the Shield
+              {/* Mapeamos cada palabra para animarla individualmente */}
+              {titleWords.map((word, index) => (
+                <motion.span key={index} variants={titleWordVariant} className="inline-block mr-4">
+                  {word}
+                  {/* Añadimos un salto de línea después de "Ballad" en pantallas grandes */}
+                  {word === "Ballad" && <br className="hidden md:block" />}
+                </motion.span>
+              ))}
             </motion.h1>
           </motion.div>
         )}
       </AnimatePresence>
-      
-      <header className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10">
-        <div className="sun"></div>
 
+      {/* --- Mejora 2: Header simplificado y animado --- */}
+      {/* El header ahora aparece con una animación suave después de la intro */}
+      <motion.header 
+        className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 4 }} // Delay para que aparezca después de la intro
+      >
+        <div className="sun"></div>
         <div>
-          <Link href="/" 
-            // CAMBIOS AQUÍ: Tamaño y color actualizados para consistencia
-            className="text-6xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors"
-          >
-            
-            The Broken Ballad <br className="hidden md:block" />
-              of the Shield
+          {/* Título simplificado a un tamaño más adecuado para un "logo" */}
+          <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
+            The Broken Ballad
           </Link>
         </div>
-
-        <nav className="flex items-center gap-4">
-          <Link href="/story" className={navLinkClasses}>
+        <nav className="flex items-center gap-2">
+          {/* --- Mejora 3: Botones de navegación con micro-interacción --- */}
+          <MotionLink href="/story" className={navLinkClasses} whileHover={{ y: -2 }}>
             HISTORY
-          </Link>
-          <Link href="/chapters" className={navLinkClasses}>
+          </MotionLink>
+          <MotionLink href="/chapters" className={navLinkClasses} whileHover={{ y: -2 }}>
             CHARACTERS
-          </Link>
-          <Link href="/about" className={navLinkClasses}>
+          </MotionLink>
+          <MotionLink href="/about" className={navLinkClasses} whileHover={{ y: -2 }}>
             ABOUT US
-          </Link>
+          </MotionLink>
         </nav>
-      </header>
+      </motion.header>
 
-      <main className="flex justify-center w-full px-6">
-        <motion.img
-          src="/main-image.jpg"
-          alt="Main scene"
-          className="rounded-xl shadow-2xl max-w-4xl w-full object-cover"
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, delay: 3 }}
-        />
-      </main>
-
+      <motion.main 
+        className="flex flex-col items-center w-full px-6"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 4.2 }} // Delay ligeramente mayor al del header
+      >
+        <section className="mt-10 max-w-5xl w-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg">
+          <h2 className="text-5xl font-bold text-yellow-400 mb-4 font-serif text-center">Sinopsis</h2>
+          <p className="text-lg text-white/90 leading-relaxed text-center">
+            En un mundo donde la esperanza se desvanece y los héroes han caído, un grupo inesperado debe unir fuerzas para restaurar el equilibrio perdido. "The Broken Ballad of the Shield" narra la travesía de almas rotas que buscan redención, enfrentando antiguos enemigos y descubriendo secretos que cambiarán su destino para siempre.
+          </p>
+        </section>
+      </motion.main>
+      
       <style jsx>{`
         .sun {
+          /* Estilos del sol sin cambios */
           position: absolute;
           top: 50px;
           right: -200px;
