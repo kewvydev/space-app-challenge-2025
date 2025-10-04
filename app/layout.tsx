@@ -33,7 +33,7 @@ export default function RootLayout({
           <div className="twinkling"></div>
           <div className="clouds"></div>
           
-          {/* Content */}
+          {/* Content probando gael branch*/}
           <div className="relative z-10">
             {children}
           </div>
