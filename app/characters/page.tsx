@@ -70,21 +70,20 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 1 }} // Delay ligeramente mayor al del header
       >
-        <section className="mt-10 max-w-5xl w-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg">
-          <h1 className="text-5xl font-bold text-yellow-400 mb-4 font-serif text-center font-bold">Characters </h1>
+        <section className="mt-10 max-w-5xl w-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl pt-5 pb-5 shadow-lg">
 
-
+          <h1 className="text-5xl font-bold text-yellow-400 mb-8 mt-8 font-serif text-center font-bold">Characters </h1>
 
         </section>
-        <div className="left-0 flex flex-col items-start w-max  gap-8 text-gray-300 text-2xl mt-10 mb-20 px-4  ">
-          <div className=" w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
-            <h1 className="font-bold">Aura- The young genius /Navegadora</h1><br className="hidden md:block" />
+        <div className="left-0 flex flex-col items-start w-max  gap-6 text-gray-300 text-2xl mt-10 mb-15 px-4  ">
+          <div className=" w-4xl text-gray-300 text-2xl mt-5 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
+            <h1 className="font-bold">Aura- The young genius</h1><br className="hidden md:block" />
 
             <p>She was born after the Storm. She only knows the sky through the "Crystal Cores." She has endless curiosity and is an expert at repairing the ship’s old radio. She embodies innocence and hope. </p>
 
           </div>
 
-          <div className="max-w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
+          <div className="max-w-4xl text-gray-300 text-2xl mt-1 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
 
             <h1 className="font-bold">Captain Spark</h1><br className="hidden md:block" />
 
@@ -92,13 +91,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
-
-            <h1 className="font-bold">Captain Spark</h1><br className="hidden md:block" />
-
-            <p>He was an electrical grid engineer before the Storm. His mission is to find the old "Epsilon Station," a space research satellite that might hold the knowledge to build a functional Magnetic Shield for an Arcology. He represents guilt and adult redemption.
-            </p>
-          </div>
+          
 
 
 
