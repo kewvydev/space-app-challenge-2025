@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import TeamMemberCard from "./components/TeamMemberCard";
-import { motion } from "framer-motion";
 
 const MotionLink = motion(Link);
 
@@ -47,14 +46,6 @@ export default function AboutPage() {
 
         
         <div className="min-h-screen flex flex-col items-center overflow-y-auto">
-        
-             <motion.header 
-      className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 4 }}
-    >
-      <div>
 
                 <div className="p-8 flex flex-col w-full items-center justify-start pt-20">
                     <h1 className="text-4xl font-extrabold text-yellow-400 mb-6 uppercase tracking-widest text-center">
@@ -104,6 +95,7 @@ export default function AboutPage() {
                         </div>
                     </section>
                 </div>
+            </div>
             </motion.main>
             <style jsx>{`
         .sun {
@@ -121,7 +113,6 @@ export default function AboutPage() {
                       0 0 100px 40px #ff4500;
         }
       `}</style>
-        </div>
     </div>
 );
 }
