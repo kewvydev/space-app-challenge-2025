@@ -24,7 +24,7 @@ export default function TeamMemberCard({ name, role, image }: Props) {
                     />
                 ) : (
                     <div className="w-full h-full flex items-center justify-center bg-gray-700 text-white text-3xl">
-                        🥵
+                    
                     </div>
                 )}
             </div>

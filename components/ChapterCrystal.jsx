@@ -53,9 +53,20 @@ const STORY_FACES = [
 function CrystalChapter({ currentFace, onFaceChange }) {
   const meshRef = useRef();
   const targetRotation = useRef(0);
+  const textRefs = useRef({});
 
-  useFrame(() => {
+  useFrame((state) => {
     meshRef.current.rotation.y += (targetRotation.current - meshRef.current.rotation.y) * 0.05;
+    
+    // Animate text elements subtly
+    Object.values(textRefs.current).forEach((ref, index) => {
+      if (ref) {
+        const isActive = currentFace === index;
+        const time = state.clock.getElapsedTime();
+        ref.rotation.y = Math.sin(time * 0.3 + index) * 0.05;
+        ref.scale.setScalar(isActive ? 1 + Math.sin(time * 1.5) * 0.02 : 1);
+      }
+    });
   });
 
   const color = currentFace === STORY_FACES[currentFace].id ? '#facc15' : '#666666';
@@ -118,17 +129,38 @@ function CrystalChapter({ currentFace, onFaceChange }) {
               color={isActive ? face.color : '#666666'}
               distance={6}
             />
-            {/* Texto en cada vértice */}
-        <Text
-              position={[x * 2.5, y * 2.5, z * 2.5]}
-          anchorX="center"
-          anchorY="middle"
-              fontSize={0.08}
-              color={isActive ? face.color : '#444444'}
-              maxWidth={1.5}
-        >
-          {face.text}
-        </Text>
+            {/* Texto en cada vértice - Efectos simplificados */}
+            <group 
+              ref={(el) => textRefs.current[face.id] = el}
+              position={[x * 2.5, y * 2.5 + 0.3, z * 2.5]}
+            >
+              {/* Fondo sutil para mejor legibilidad */}
+              <mesh position={[0, 0, -0.01]}>
+                <planeGeometry args={[2.0, 0.35]} />
+                <meshStandardMaterial 
+                  color="#000000" 
+                  transparent={true} 
+                  opacity={isActive ? 0.5 : 0.3}
+                />
+              </mesh>
+              
+              {/* Texto principal */}
+              <Text
+                position={[0, 0, 0]}
+                anchorX="center"
+                anchorY="middle"
+                fontSize={isActive ? 0.11 : 0.09}
+                color={isActive ? face.color : '#aaaaaa'}
+                maxWidth={1.8}
+                font="https://fonts.gstatic.com/s/spacemono/v13/i7dPIFZifjKcF5UAWdDRUEZ2RFq7AwU.ttf"
+                fontWeight="bold"
+                outlineWidth={0.01}
+                outlineColor={isActive ? face.color : '#333333'}
+                outlineOpacity={isActive ? 0.5 : 0.2}
+              >
+                {face.text}
+              </Text>
+            </group>
             {/* Esfera indicadora en cada vértice - Clickable para navegación directa */}
             <mesh 
               position={[x * 2.5, y * 2.5, z * 2.5]} 
@@ -138,7 +170,7 @@ function CrystalChapter({ currentFace, onFaceChange }) {
                 handleVertexClick(face.id);
               }}
               onPointerOver={(e) => {
-                e.object.scale.setScalar(1.2);
+                e.object.scale.setScalar(1.1);
                 document.body.style.cursor = 'pointer';
               }}
               onPointerOut={(e) => {
@@ -146,7 +178,7 @@ function CrystalChapter({ currentFace, onFaceChange }) {
                 document.body.style.cursor = 'auto';
               }}
             >
-              <sphereGeometry args={[0.08, 16, 16]} />
+              <sphereGeometry args={[0.05, 16, 16]} />
               <meshStandardMaterial 
                 color={isActive ? face.color : '#444444'}
                 emissive={isActive ? face.color : '#222222'}
@@ -161,7 +193,7 @@ function CrystalChapter({ currentFace, onFaceChange }) {
             {/* Energy Ring around active vertex */}
             {isActive && (
               <mesh position={[x * 2.5, y * 2.5, z * 2.5]} rotation-y={targetRotation.current}>
-                <torusGeometry args={[0.15, 0.02, 8, 16]} />
+                <torusGeometry args={[0.08, 0.015, 8, 16]} />
                 <meshStandardMaterial 
                   color={face.color}
                   emissive={face.color}

@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 import TeamMemberCard from "./components/TeamMemberCard";
 import { motion } from "framer-motion";
 
@@ -44,14 +45,16 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 1 }} // Delay ligeramente mayor al del header
             >
 
-                <section className="w-full max-w-5xl mb-24 px-4">
-                    <h2 className="text-4xl font-extrabold text-yellow-400 mb-10 text-center uppercase tracking-wider">
-                        About our Project
-                    </h2>
-                    <p className="text-gray-300 text-2xl max-w-3xl mb-16 px-4">
-                        On this page we tell you a story about...
-                    </p>
-                </section>
+        
+        <div className="min-h-screen flex flex-col items-center overflow-y-auto">
+        
+             <motion.header 
+      className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
+      initial={{ opacity: 0, y: -30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, delay: 4 }}
+    >
+      <div>
 
                 <div className="p-8 flex flex-col w-full items-center justify-start pt-20">
                     <h1 className="text-4xl font-extrabold text-yellow-400 mb-6 uppercase tracking-widest text-center">
@@ -119,5 +122,6 @@ export default function AboutPage() {
         }
       `}</style>
         </div>
-    );
+    </div>
+);
 }
