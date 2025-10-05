@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "../components/Navbar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,16 +27,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        // 👇 CAMBIO AQUÍ: Se eliminó la clase "bg-space-dark"
-        className={`${geistSans.variable} ${geistMono.variable} h-full font-mono text-cyan-400 antialiased overflow-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} h-full font-mono text-cyan-400 antialiased`}
       >
         <div className="relative min-h-screen">
-          {/* Space Background Layers */}
           <div className="stars"></div>
           <div className="twinkling"></div>
           <div className="clouds"></div>
           
-          {/* Content*/}
           <div className="relative z-10">
             {children}
           </div>
