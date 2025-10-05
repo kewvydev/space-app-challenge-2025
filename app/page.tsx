@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -94,20 +95,39 @@ export default function Home() {
         </nav>
       </motion.header>
 
-
       <motion.main
         className="flex flex-col items-center w-full px-6"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 4.2 }}
       >
-        <section className="mt-10 max-w-5xl w-full bg-yellow-200/8 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg">
-          <h2 className="text-5xl font-bold text-yellow-400 mb-4 font-serif text-center">Synopsis</h2>
-          <p className="text-lg text-white/90 leading-relaxed text-center">
+        <section className="mt-8 max-w-5xl w-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-4 shadow-lg">
+          <h2 className="text-3xl font-bold text-yellow-400 mb-4 font-serif text-center">Synopsis</h2>
+          <p className="text-md text-white/90 leading-relaxed text-center">
             In a world where hope is fading and heroes have fallen, an unlikely group must join forces to restore the lost balance.
              "The Ballad of the Broken Shield" tells the journey of broken souls in search of redemption, facing old enemies and uncovering secrets that will change their destiny forever.
           </p>
         </section>
+
+        {/* Hero Banner Section */}
+        <motion.div
+          className="w-full max-w-5xl mt-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 4.4 }}
+        >
+          <div className="relative bg-black/40 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src="/hero_banner.png"
+              alt="The Ballad of the Broken Shield - Space Western Scene"
+              width={1200}
+              height={300}
+              className="w-full h-auto object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+        </motion.div>
       </motion.main>
 
       <style jsx>{`

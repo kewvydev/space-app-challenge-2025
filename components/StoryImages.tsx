@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 
@@ -27,7 +27,7 @@ const STORY_PAGES = [
     title: 'The Roar and The Silence',
     text: 'Usually, the Earth\'s magnetic shield protects us, and we only see beautiful lights in the sky—the auroras. But the GMS-28 storm, the "Great Roar," was too strong. We had been warned about the potential, especially after the 1859 Carrington Event—the largest space storm ever recorded—but the world wasn\'t ready for a modern catastrophe',
     images: [
-      '/story-images/chapter1/image2.png'
+      '/story-images/chapter1/image1.png'
     ]
   },
   {
@@ -43,7 +43,7 @@ const STORY_PAGES = [
     title: 'The Roar and The Silence',
     text: 'The indirect impact is the world I was born into. Without electricity or global communications, cities collapsed, and the world fractured. My life and my work are a direct consequence. Dad, Captain \'Spark\', calls that era "The Ballad of the Broken Shield." And now, my biggest mission is to prevent a sequel from ever being written',
     images: [
-      '/story-images/chapter1/image3.png'
+      '/story-images/chapter1/image2.png'
     ]
   },
   {
@@ -179,6 +179,25 @@ function StoryImages() {
 
   const currentStory = STORY_PAGES[currentPage];
 
+  const getChapterFromPath = (path: string) => {
+    const match = path.match(/chapter(\d+)/);
+    return match ? parseInt(match[1], 10) : currentPage + 1;
+  };
+
+  const totalChapters = useMemo(() => {
+    const unique = new Set<number>();
+    STORY_PAGES.forEach(page => {
+      page.images.forEach(img => {
+        const m = img.match(/chapter(\d+)/);
+        if (m) unique.add(parseInt(m[1], 10));
+      });
+    });
+    return unique.size || STORY_PAGES.length;
+  }, []);
+
+  const currentImagePath = currentStory.images[currentImageIndex];
+  const currentChapterNumber = getChapterFromPath(currentImagePath);
+
   return (
     <div className="relative min-h-screen flex flex-col items-center justify-center w-full p-6">
        {/* Header */}
@@ -204,9 +223,9 @@ function StoryImages() {
           >
             ← Back to 3D
           </a>
-          <span className="text-sm">
-            Chapter {currentPage + 1} of {STORY_PAGES.length} | Image {currentImageIndex + 1} of {STORY_PAGES[currentPage].images.length}
-          </span>
+           <span className="text-sm">
+             Chapter {currentChapterNumber} of {totalChapters} | Image {currentImageIndex + 1} of {STORY_PAGES[currentPage].images.length}
+           </span>
         </nav>
       </motion.header>
 
@@ -217,7 +236,7 @@ function StoryImages() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.2 }}
       >
-        {currentImageIndex === 0 && (
+         {currentImageIndex === 0 && (
           <motion.div
             key={`chapter-title-${currentPage}`}
             className="w-full max-w-4xl mb-4"
@@ -227,7 +246,7 @@ function StoryImages() {
           >
             <div className="bg-black/60 backdrop-blur-sm border border-yellow-400/40 rounded-xl p-4 shadow-lg">
               <h2 className="text-center text-yellow-300 text-xl font-semibold tracking-wide">
-                Chapter {currentPage + 1}: {currentStory.title}
+                 Chapter {currentChapterNumber}: {currentStory.title}
               </h2>
             </div>
           </motion.div>
