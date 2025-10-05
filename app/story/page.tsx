@@ -3,7 +3,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import StoryPage from "@/components/StoryPage";
 
-// Para poder animar el componente Link de Next.js
+// To animate the Next.js Link component
 const MotionLink = motion(Link);
 
 export default function Page() {
@@ -11,7 +11,7 @@ export default function Page() {
 
   return (
     <div className="relative min-h-screen flex flex-col items-center w-full">
-      {/* Header consistente con la página principal */}
+      {/* Header consistent with the main page */}
       <motion.header 
         className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
         initial={{ opacity: 0, y: -30 }}
@@ -37,7 +37,7 @@ export default function Page() {
         </nav>
       </motion.header>
 
-      {/* Contenido principal con el componente StoryPage */}
+      {/* Main content with the StoryPage component */}
       <motion.main 
         className="flex flex-col items-center w-full px-6 flex-1"
         initial={{ opacity: 0, y: 30 }}
