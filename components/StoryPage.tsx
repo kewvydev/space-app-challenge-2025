@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import CrystalChapter, { STORY_FACES } from './ChapterCrystal';
 
 function StoryPage() {
   const [currentFace, setCurrentFace] = useState(0);
+  const router = useRouter();
 
   // Navegación con teclado
   useEffect(() => {
@@ -33,6 +35,12 @@ function StoryPage() {
       if (key === ' ') {
         event.preventDefault();
         setCurrentFace((prev) => (prev + 1) % STORY_FACES.length);
+      }
+      
+      // Navegación con Enter - ir a la historia visual del capítulo
+      if (key === 'Enter') {
+        event.preventDefault();
+        router.push('/story/images');
       }
     };
 
@@ -83,7 +91,7 @@ function StoryPage() {
         {/* Instructions */}
         <div className="text-center">
           <p className="text-yellow-400 text-sm font-mono">
-            Click vertices for direct navigation • Click center for next • Keys 1-6 or arrows
+            Click vertices for direct navigation • Click center for next • Keys 1-6 or arrows • Enter to view chapter
           </p>
         </div>
       </div>
