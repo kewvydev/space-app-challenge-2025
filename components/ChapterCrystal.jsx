@@ -132,7 +132,7 @@ function CrystalChapter({ currentFace, onFaceChange }) {
             {/* Esfera indicadora en cada vértice - Clickable para navegación directa */}
             <mesh 
               position={[x * 2.5, y * 2.5, z * 2.5]} 
-              scale={isActive ? 1.5 : 1}
+              scale={isActive ? 2 : 1}
               onClick={(e) => {
                 e.stopPropagation(); // Evitar que se propague al octaedro central
                 handleVertexClick(face.id);
