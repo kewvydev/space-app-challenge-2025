@@ -87,7 +87,7 @@ export default function Home() {
           <MotionLink href="/story" className={navLinkClasses} whileHover={{ y: -2 }}>
             HISTORY
           </MotionLink>
-          <MotionLink href="/chapters" className={navLinkClasses} whileHover={{ y: -2 }}>
+          <MotionLink href="/characters" className={navLinkClasses} whileHover={{ y: -2 }}>
             CHARACTERS
           </MotionLink>
           <MotionLink href="/about" className={navLinkClasses} whileHover={{ y: -2 }}>
