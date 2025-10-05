@@ -10,7 +10,7 @@ export default function Home() {
 
 
   // --- Mejora 1: Variantes para la animación del título palabra por palabra ---
-  const title = "The Broken Ballad of the Shield";
+  const title = "The Ballad of The Broken Shield";
   const titleWords = title.split(" ");
 
   const titleContainerVariant = {
@@ -47,7 +47,7 @@ export default function Home() {
         <div>
           {/* Título simplificado a un tamaño más adecuado para un "logo" */}
           <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
-            The Broken Ballad
+            The Ballad of the Broken Shield
           </Link>
         </div>
         <nav className="flex items-center gap-2">
@@ -76,31 +76,31 @@ export default function Home() {
 
 
         </section>
-        <div className="grid grid-cols-1 md:grid-cols-2 w-max justify-between gap-8 text-gray-300 text-2xl mt-10 mb-20 px-4  ">
-          <div className="flex flex-col w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
-            <h1 className="font-bold">Aura- La joven Genio /Navegadora</h1><br className="hidden md:block" />
+        <div className="left-0 flex flex-col items-start w-max  gap-8 text-gray-300 text-2xl mt-10 mb-20 px-4  ">
+          <div className=" w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
+            <h1 className="font-bold">Aura- The young genius /Navegadora</h1><br className="hidden md:block" />
 
-            <p>Nacio después de la tormenta. Solo conoce el cielo por los nucleos "Núcleos de Cristal". Tiene una curiosidad infinita y es experta en reparar la radio antigua
-              de la nave. Ella es la que lleva inocencia y la esperanza </p>
+            <p>She was born after the Storm. She only knows the sky through the "Crystal Cores." She has endless curiosity and is an expert at repairing the ship’s old radio. She embodies innocence and hope. </p>
+
           </div>
 
-          <div className="flex flex-col max-w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
+          <div className="max-w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
 
-            <h1 className="font-bold">"Spark" Captain</h1><br className="hidden md:block" />
+            <h1 className="font-bold">Captain Spark</h1><br className="hidden md:block" />
 
-            <p>Era un ingeniero de redes eléctricas antes de la Tormenta. Su misión es encontrar la vieja "Estación Epsilon", un satelite de investigación espacial
-              que quizás contiene el conocimiento para construir un Escudo Magnético funcional para una Arcología. Él representa la culpa y la redención adulta.
+            <p>He was an electrical grid engineer before the Storm. His mission is to find the old "Epsilon Station," a space research satellite that might hold the knowledge to build a functional Magnetic Shield for an Arcology. He represents guilt and adult redemption.
             </p>
           </div>
-          <br className="hidden md:block"/>
-          <div className="flex flex-col w-full px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400 col-span-2 justify-self-center max-w-xl">
 
-            <h1 className="font-bold">"K-9 Drone</h1><br className="hidden md:block" />
+          <div className="max-w-4xl text-gray-300 text-2xl mt-10 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
 
-            <p>Un viejo dron de reparto modificado que ha sido blindado contra pulsos electromagnéticos. Habla en frases incompletas y chistosas, es el comic relief y el protector
+            <h1 className="font-bold">Captain Spark</h1><br className="hidden md:block" />
+
+            <p>He was an electrical grid engineer before the Storm. His mission is to find the old "Epsilon Station," a space research satellite that might hold the knowledge to build a functional Magnetic Shield for an Arcology. He represents guilt and adult redemption.
             </p>
           </div>
-          
+
+
 
         </div>
       </motion.main>

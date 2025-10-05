@@ -21,7 +21,7 @@ export default function Page() {
         <div className="sun"></div>
         <div>
           <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
-            The Broken Ballad
+            The Ballad of the Broken Shield
           </Link>
         </div>
         <nav className="flex items-center gap-2">

@@ -44,58 +44,63 @@ export default function AboutPage() {
                 transition={{ duration: 0.8, delay: 1 }} // Delay ligeramente mayor al del header
             >
 
-        
-        <div className="min-h-screen flex flex-col items-center overflow-y-auto">
 
-                <div className="p-8 flex flex-col w-full items-center justify-start pt-20">
-                    <h1 className="text-4xl font-extrabold text-yellow-400 mb-6 uppercase tracking-widest text-center">
-                        About us
-                    </h1>
-                    <p className="text-gray-300 text-2xl max-w-4xl mb-16 px-4 text-center">
-                        We are a group of students from the Faculty of Engineering, Architecture and Design
-                        at the Autonomous University of Baja California, eager to create interesting things and
-                        challenge ourselves.
-                    </p>
+                <div className="min-h-screen flex flex-col items-center overflow-y-auto">
+
+                    <div className="p-8 flex flex-col w-full items-center justify-start pt-20">
+                        <h1 className="text-4xl font-extrabold text-yellow-400 mb-6 uppercase tracking-widest text-center">
+                            About us and our project
+                        </h1>
+                        <p className="text-gray-300 text-2xl max-w-4xl mb-16 px-4 text-center">
+                            We are a group of students from the Faculty of Engineering, Architecture and Design
+                            at the Autonomous University of Baja California, eager to create interesting things and
+                            challenge ourselves.<br className="hidden md:block" />
+                            <br className="hidden md:block" />
+                            Our story is set in the worst-case scenario of space weather, an event that NASA and NOAA have studied since the historic Carrington Event of 1859.
 
 
-                    <section className="w-full max-w-6xl">
-                        <h2 className="text-4xl font-bold text-yellow-400 mb-10 text-center">
-                            The Team
-                        </h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-                            <TeamMemberCard
-                                name="Kevin"
-                                role="Developer"
-                                image="kevin.png"
-                            />
 
-                            <TeamMemberCard
-                                name="Eduardo"
-                                role="Developer"
-                                image="pelon.jpg"
-                            />
+                        </p>
 
-                            <TeamMemberCard
-                                name="Brandon"
-                                role="Developer"
-                                image="brandon.jpg"
-                            />
 
-                            <TeamMemberCard
-                                name="Gael"
-                                role="Developer"
-                                image="gael.jpg"
-                            />
+                        <section className="w-full max-w-6xl">
+                            <h2 className="text-4xl font-bold text-yellow-400 mb-10 text-center">
+                                The Team
+                            </h2>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+                                <TeamMemberCard
+                                    name="Kevin"
+                                    role="Developer"
+                                    image="kevin.png"
+                                />
 
-                            <TeamMemberCard
-                                name="Isis"
-                                role="Designer"
-                                image="isis.jpg"
-                            />
-                        </div>
-                    </section>
+                                <TeamMemberCard
+                                    name="Eduardo"
+                                    role="Developer"
+                                    image="pelon.jpg"
+                                />
+
+                                <TeamMemberCard
+                                    name="Brandon"
+                                    role="Developer"
+                                    image="brandon.jpg"
+                                />
+
+                                <TeamMemberCard
+                                    name="Gael"
+                                    role="Developer"
+                                    image="gael.jpg"
+                                />
+
+                                <TeamMemberCard
+                                    name="Isis"
+                                    role="Designer"
+                                    image="isis.jpg"
+                                />
+                            </div>
+                        </section>
+                    </div>
                 </div>
-            </div>
             </motion.main>
             <style jsx>{`
         .sun {
@@ -113,6 +118,6 @@ export default function AboutPage() {
                       0 0 100px 40px #ff4500;
         }
       `}</style>
-    </div>
-);
+        </div>
+    );
 }
