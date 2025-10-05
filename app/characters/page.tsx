@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
@@ -72,29 +73,65 @@ export default function Home() {
       >
         <section className="mt-10 max-w-5xl w-full bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl pt-5 pb-5 shadow-lg">
 
-          <h1 className="text-5xl font-bold text-yellow-400 mb-8 mt-8 font-serif text-center font-bold">Characters </h1>
+          <h1 className="text-5xl font-bold text-yellow-400 mb-8 mt-8 font-serif text-center">Characters </h1>
 
         </section>
-        <div className="left-0 flex flex-col items-start w-max  gap-6 text-gray-300 text-2xl mt-10 mb-15 px-4  ">
-          <div className=" w-4xl text-gray-300 text-2xl mt-5 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
-            <h1 className="font-bold">Aura- The young genius</h1><br className="hidden md:block" />
+        <div className="w-full max-w-6xl mt-8 space-y-8">
+          {/* Aura Character Card */}
+          <motion.div 
+            className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-lg"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.2 }}
+          >
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="relative w-48 h-48 md:w-56 md:h-56">
+                  <Image
+                    src="/aura.png"
+                    alt="Aura - The young genius"
+                    fill
+                    className="object-cover object-top rounded-lg border border-yellow-400/30"
+                  />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-left">
+                <h2 className="text-3xl font-bold text-yellow-400 mb-4 font-serif">Aura</h2>
+                <h3 className="text-xl text-yellow-300 mb-4 italic">The young genius</h3>
+                <p className="text-lg text-white/90 leading-relaxed">
+                  She was born after the Storm. She only knows the sky through the "Crystal Cores." She has endless curiosity and is an expert at repairing the ship's old radio. She embodies innocence and hope.
+                </p>
+              </div>
+            </div>
+          </motion.div>
 
-            <p>She was born after the Storm. She only knows the sky through the "Crystal Cores." She has endless curiosity and is an expert at repairing the ship’s old radio. She embodies innocence and hope. </p>
-
-          </div>
-
-          <div className="max-w-4xl text-gray-300 text-2xl mt-1 mb-20 px-4 bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-8 shadow-lg text-yellow-400">
-
-            <h1 className="font-bold">Captain Spark</h1><br className="hidden md:block" />
-
-            <p>He was an electrical grid engineer before the Storm. His mission is to find the old "Epsilon Station," a space research satellite that might hold the knowledge to build a functional Magnetic Shield for an Arcology. He represents guilt and adult redemption.
-            </p>
-          </div>
-
-          
-
-
-
+          {/* Captain Spark Character Card */}
+          <motion.div 
+            className="bg-black/60 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-lg"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 1.4 }}
+          >
+            <div className="flex flex-col md:flex-row-reverse items-center gap-6">
+              <div className="flex-shrink-0">
+                <div className="relative w-48 h-48 md:w-56 md:h-56">
+                  <Image
+                    src="/spark.png"
+                    alt="Captain Spark - Electrical grid engineer"
+                    fill
+                    className="object-cover object-top rounded-lg border border-yellow-400/30"
+                  />
+                </div>
+              </div>
+              <div className="flex-1 text-center md:text-right">
+                <h2 className="text-3xl font-bold text-yellow-400 mb-4 font-serif">Captain Spark</h2>
+                <h3 className="text-xl text-yellow-300 mb-4 italic">Electrical grid engineer</h3>
+                <p className="text-lg text-white/90 leading-relaxed">
+                  He was an electrical grid engineer before the Storm. His mission is to find the old "Epsilon Station," a space research satellite that might hold the knowledge to build a functional Magnetic Shield for an Arcology. He represents guilt and adult redemption.
+                </p>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </motion.main>
 
