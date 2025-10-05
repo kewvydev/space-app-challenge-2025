@@ -65,15 +65,34 @@
           )}
         </AnimatePresence>
 
-        
-        <motion.header 
-          className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 4 }}
-        >
-          <div className="sun"></div>
-          <div>
+      {/* --- Mejora 2: Header simplificado y animado --- */}
+      {/* El header ahora aparece con una animación suave después de la intro */}
+      <motion.header 
+        className="w-full max-w-7xl flex items-center justify-between p-4 my-6 bg-black/40 backdrop-blur-sm rounded-2xl z-10"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 4 }} // Delay para que aparezca después de la intro
+      >
+        <div className="sun"></div>
+        <div>
+          {/* Título simplificado a un tamaño más adecuado para un "logo" */}
+          <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
+            The Broken Ballad
+          </Link>
+        </div>
+        <nav className="flex items-center gap-2">
+          {/* --- Mejora 3: Botones de navegación con micro-interacción --- */}
+          <MotionLink href="/story" className={navLinkClasses} whileHover={{ y: -2 }}>
+            HISTORY
+          </MotionLink>
+          <MotionLink href="/characters" className={navLinkClasses} whileHover={{ y: -2 }}>
+            CHARACTERS
+          </MotionLink>
+          <MotionLink href="/about" className={navLinkClasses} whileHover={{ y: -2 }}>
+            ABOUT US
+          </MotionLink>
+        </nav>
+      </motion.header>
 
             <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
               The Broken Ballad <br className="hidden md:block" />

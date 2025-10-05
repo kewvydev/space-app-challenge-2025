@@ -28,7 +28,7 @@ export default function Page() {
           <MotionLink href="/story" className={`${navLinkClasses} bg-yellow-400/20 text-yellow-400`} whileHover={{ y: -2 }}>
             HISTORY
           </MotionLink>
-          <MotionLink href="/chapters" className={navLinkClasses} whileHover={{ y: -2 }}>
+          <MotionLink href="/characters" className={navLinkClasses} whileHover={{ y: -2 }}>
             CHARACTERS
           </MotionLink>
           <MotionLink href="/about" className={navLinkClasses} whileHover={{ y: -2 }}>
