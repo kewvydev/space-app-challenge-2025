@@ -56,7 +56,8 @@ export default function AboutPage() {
                             at the Autonomous University of Baja California, eager to create interesting things and
                             challenge ourselves.<br className="hidden md:block" />
                             <br className="hidden md:block" />
-                            Our story is set in the worst-case scenario of space weather, an event that NASA and NOAA have studied since the historic Carrington Event of 1859.
+                            Our story is set in the worst-case scenario of space weather, an event that NASA and NOAA have studied since the historic Carrington Event of 1859 and "our villain" is CME
+                            (Coronal Mass Ejection), a solar phenomenon that could cause catastrophic damage to our planet if it were to hit us directly.   
 
 
 
