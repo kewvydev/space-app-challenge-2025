@@ -94,23 +94,6 @@
         </nav>
       </motion.header>
 
-            <Link href="/" className="text-3xl font-bold text-yellow-400 font-serif hover:text-yellow-200 transition-colors">
-              The Broken Ballad <br className="hidden md:block" />
-                of the Shield
-            </Link>
-          </div>
-          <nav className="flex items-center gap-2">
-            <MotionLink href="/story" className={navLinkClasses} whileHover={{ y: -2 }}>
-              HISTORY
-            </MotionLink>
-            <MotionLink href="/chapters" className={navLinkClasses} whileHover={{ y: -2 }}>
-              CHARACTERS
-            </MotionLink>
-            <MotionLink href="/about" className={navLinkClasses} whileHover={{ y: -2 }}>
-              ABOUT US
-            </MotionLink>
-          </nav>
-        </motion.header>
 
         <motion.main 
           className="flex flex-col items-center w-full px-6"
