@@ -11,42 +11,42 @@ const STORY_FACES = [
     text: "Chapter 1: The Roar and The Silence (GMS-28)", 
     position: [0, 1, 0],
     description: "The solar system trembles as the sun's fury reaches its peak. The last space stations scramble to find shelter among the asteroids.",
-    color: "#ff8844"
+    color: "#facc15"
   },
   { 
     id: 1, 
     text: "Chapter 2: Our Home, The Sun Traveler", 
     position: [1, 0, 0],
     description: "Captain Aura's ship, the Sun Traveler, becomes a beacon of hope as it navigates the treacherous space lanes with ancient crystal compasses.",
-    color: "#00ffaa"
+    color: "#facc15"
   },
   { 
     id: 2, 
     text: "Chapter 3: My Crystal Compasses", 
     position: [0, 0, 1],
     description: "The mysterious crystal navigation devices that allow safe passage through the void. Each crystal holds the memory of a thousand journeys.",
-    color: "#8844ff"
+    color: "#facc15"
   },
   { 
     id: 3, 
     text: "Chapter 4: The Pulsar Command Room", 
     position: [-1, 0, 0],
     description: "Deep in the asteroid belt, Epsilon's command station sends out its desperate signal. Will anyone answer the call for help?",
-    color: "#ff33aa"
+    color: "#facc15"
   },
   { 
     id: 4, 
     text: "Chapter 5: The Sun Gets Angry Again", 
     position: [0, 0, -1],
     description: "Solar flares threaten to destroy what little remains of human civilization. The crew must find a way to survive the star's wrath.",
-    color: "#ff4444"
+    color: "#facc15"
   },
   { 
     id: 5, 
     text: "Chapter 6: The Secret Message Sent!", 
     position: [0, -1, 0],
     description: "A message of hope is transmitted across the galaxy. The survivors have found a way to communicate with other human colonies.",
-    color: "#44ff88"
+    color: "#facc15"
   }
 ];
 
@@ -58,7 +58,7 @@ function CrystalChapter({ currentFace, onFaceChange }) {
     meshRef.current.rotation.y += (targetRotation.current - meshRef.current.rotation.y) * 0.05;
   });
 
-  const color = currentFace === STORY_FACES[currentFace].id ? '#00ffaa' : '#666666';
+  const color = currentFace === STORY_FACES[currentFace].id ? '#facc15' : '#666666';
   const scale = currentFace === STORY_FACES[currentFace].id ? 1.2 : 1.0;
 
   // Manejar el clic para ir al siguiente capítulo (clic en el octaedro central)
@@ -81,11 +81,11 @@ function CrystalChapter({ currentFace, onFaceChange }) {
       >
         <octahedronGeometry args={[2, 0]} />
         <meshStandardMaterial 
-          color="#00ffaa" 
+          color="#facc15" 
           transparent={true} 
           opacity={0.2} 
           wireframe={true}
-          emissive="#00ffaa"
+          emissive="#facc15"
           emissiveIntensity={0.5}
           roughness={0.1}
           metalness={0.8}
@@ -96,11 +96,11 @@ function CrystalChapter({ currentFace, onFaceChange }) {
       <mesh rotation-y={targetRotation.current * 0.3}>
         <octahedronGeometry args={[2.5, 0]} />
         <meshStandardMaterial 
-          color="#00ffaa" 
+          color="#facc15" 
           transparent={true} 
           opacity={0.05} 
           wireframe={true}
-          emissive="#00ffaa"
+          emissive="#facc15"
           emissiveIntensity={0.2}
         />
       </mesh>

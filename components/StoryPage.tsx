@@ -41,10 +41,10 @@ function StoryPage() {
   }, []);
 
   return (
-    <div style={{ height: '100vh', width: '100vw', background: '#040d21' }}>
+    <div style={{ height: '100%', width: '100%', background: '#000000', borderRadius: '12px', overflow: 'hidden' }}>
       <Canvas camera={{ position: [0, 0, 5], fov: 75 }}>
         {/* Fondo: Estrellas y Nebulosa para la sensación espacial */}
-        <color attach="background" args={['#040d21']} />
+        <color attach="background" args={['#000000']} />
         <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />
         
         {/* Iluminación: Luz tenue y de neón para el ambiente postapocalíptico */}
@@ -60,17 +60,17 @@ function StoryPage() {
       </Canvas>
 
       {/* Interfaz 2D Superpuesta (UI/UX) */}
-      <div className="absolute bottom-0 left-0 right-0 p-8 pointer-events-none">
+      <div className="absolute bottom-0 left-0 right-0 p-6 pointer-events-none">
         {/* Chapter Info */}
-        <div className="max-w-4xl mx-auto text-center mb-6">
-          <div className="bg-space-dark/80 backdrop-blur-sm border border-cyan-400/30 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-cyan-400 mb-2 neon-glow">
+        <div className="max-w-4xl mx-auto text-center mb-4">
+          <div className="bg-black/60 backdrop-blur-sm border border-yellow-400/30 rounded-xl p-6 shadow-lg">
+            <h2 className="text-2xl font-bold text-yellow-400 mb-2 font-serif">
               {STORY_FACES[currentFace].text}
             </h2>
-            <p className="text-cyan-200 text-lg leading-relaxed mb-4">
+            <p className="text-white/90 text-lg leading-relaxed mb-4">
               {STORY_FACES[currentFace].description}
             </p>
-            <div className="flex justify-center items-center space-x-4 text-sm text-cyan-300">
+            <div className="flex justify-center items-center space-x-4 text-sm text-yellow-300">
               <span>Chapter {currentFace + 1} of 6</span>
               <span>•</span>
               <span style={{ color: STORY_FACES[currentFace].color }}>
@@ -82,7 +82,7 @@ function StoryPage() {
         
         {/* Instructions */}
         <div className="text-center">
-          <p className="text-cyan-400 text-sm font-mono">
+          <p className="text-yellow-400 text-sm font-mono">
             Click vertices for direct navigation • Click center for next • Keys 1-6 or arrows
           </p>
         </div>
