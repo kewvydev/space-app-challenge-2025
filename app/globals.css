@@ -1,6 +1,5 @@
   @import "tailwindcss";
 
-  /* Space Western Color Palette */
   :root {
     --background: #ffffff;
     --foreground: #171717;
@@ -16,7 +15,7 @@
     --text-secondary: #b0e0e6;
     --text-muted: #80c0c6;
   }
-
+/*
   @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
@@ -36,13 +35,13 @@
     --font-sans: var(--font-geist-sans);
     --font-mono: var(--font-geist-mono);
   }
+    */
   @media (prefers-color-scheme: dark) {
     :root {
       --background: #0a0a0a;
       --foreground: #ededed;
     }
   }
-  /* Base Styles */
   * {
     box-sizing: border-box;
   }
@@ -74,12 +73,10 @@
     height: 100%;
   }
 
-  /* Space Background */
   .bg-space-dark {
     background: linear-gradient(135deg, var(--space-darker) 0%, var(--space-dark) 50%, #0a1a2e 100%);
   }
 
-  /* Neon Glow Effects */
   .neon-glow {
     text-shadow: 
       0 0 5px var(--cyan-primary),
@@ -95,7 +92,6 @@
       inset 0 0 5px var(--cyan-primary);
   }
 
-  /* Circuit Pattern Background */
   .circuit-bg {
     background-image: 
       linear-gradient(90deg, transparent 50%, rgba(0, 255, 170, 0.03) 50%),
@@ -103,7 +99,6 @@
     background-size: 20px 20px;
   }
 
-  /* Holographic Text Effect */
   .holographic {
     background: linear-gradient(45deg, var(--cyan-primary), var(--green-accent), var(--magenta-accent));
     background-size: 200% 200%;
@@ -118,7 +113,6 @@
     50% { background-position: 100% 50%; }
   }
 
-  /* Glitch Effect */
   .glitch {
     position: relative;
     animation: glitch 2s infinite;
@@ -170,7 +164,6 @@
     80% { transform: translate(-2px, -2px); }
   }
 
-  /* Terminal Cursor */
   .terminal-cursor::after {
     content: '_';
     animation: blink 1s infinite;
@@ -181,7 +174,6 @@
     51%, 100% { opacity: 0; }
   }
 
-  /* Scrollbar Styling */
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -199,7 +191,6 @@
     background: var(--cyan-secondary);
   }
 
-  /* Selection Styling */
   ::selection {
     background: var(--cyan-primary);
     color: var(--space-dark);
